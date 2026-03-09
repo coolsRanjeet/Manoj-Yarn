@@ -1,0 +1,489 @@
+import { useState } from 'react';
+import { Menu, X, Award, TrendingUp, Globe, Factory, CircleCheck as CheckCircle, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+
+function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navbar */}
+      <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center">
+              <div className="text-2xl font-bold text-navy">
+                ASHU YARN
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-navy transition-colors">
+                Home
+              </button>
+              <button onClick={() => scrollToSection('products')} className="text-gray-700 hover:text-navy transition-colors">
+                Products
+              </button>
+              <button onClick={() => scrollToSection('infrastructure')} className="text-gray-700 hover:text-navy transition-colors">
+                Infrastructure
+              </button>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-navy transition-colors">
+                Contact
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Get Quote
+              </button>
+            </div>
+
+            <div className="md:hidden">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700">
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-4 pt-2 pb-4 space-y-2">
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                Home
+              </button>
+              <button onClick={() => scrollToSection('products')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                Products
+              </button>
+              <button onClick={() => scrollToSection('infrastructure')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                Infrastructure
+              </button>
+              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                Contact
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="block w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold mt-4"
+              >
+                Get Quote
+              </button>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="relative h-screen flex items-center">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1563300537-8e6d2243d6c7?auto=format&fit=crop&q=80"
+            alt="Textile Manufacturing"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/70"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+          <div className="inline-flex items-center px-4 py-2 bg-amber-500/20 backdrop-blur-sm border border-amber-500/50 rounded-full mb-6">
+            <Award className="mr-2" size={20} />
+            <span className="text-sm font-medium">GST Verified: 03AKRPC8464B1ZB</span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            Spinning Excellence for the<br />
+            <span className="text-amber-500">Global Textile Market</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl">
+            Manufacturer & Exporter of Combed, Carded, and Melange Yarns.<br />
+            Direct Factory Rates from Ludhiana.
+          </p>
+
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center transition-colors group"
+          >
+            Request a Quote
+            <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+          </button>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="bg-navy py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <TrendingUp className="text-amber-500 mb-3" size={48} />
+              <div className="text-4xl font-bold text-white mb-2">12+</div>
+              <div className="text-gray-300">Years Experience</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Factory className="text-amber-500 mb-3" size={48} />
+              <div className="text-4xl font-bold text-white mb-2">50+</div>
+              <div className="text-gray-300">Tons Monthly Capacity</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Globe className="text-amber-500 mb-3" size={48} />
+              <div className="text-4xl font-bold text-white mb-2">Global</div>
+              <div className="text-gray-300">Logistics Network</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Portfolio */}
+      <section id="products" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+              Product Portfolio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Premium quality yarns crafted to meet global textile standards
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Cotton Division */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow group">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1618609572450-41da0065d6e2?auto=format&fit=crop&q=80"
+                  alt="Cotton Division"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent"></div>
+                <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
+                  Cotton Division
+                </h3>
+              </div>
+              <div className="p-6">
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Combed Cotton Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Carded Cotton Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Organic Cotton Varieties</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Specialty Blends */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow group">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?auto=format&fit=crop&q=80"
+                  alt="Specialty Blends"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent"></div>
+                <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
+                  Specialty Blends
+                </h3>
+              </div>
+              <div className="p-6">
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Viscose Melange Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Dyed Knitted Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Custom Blend Solutions</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Industrial Yarns */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow group">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1605218427368-35b8893d5f96?auto=format&fit=crop&q=80"
+                  alt="Industrial Yarns"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent"></div>
+                <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
+                  Industrial Yarns
+                </h3>
+              </div>
+              <div className="p-6">
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">2/3/4 Ply Twist Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Reverse Twist Yarn</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-amber-500 mr-3 flex-shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700">Heavy Duty Applications</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Infrastructure & Quality */}
+      <section id="infrastructure" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6">
+                World-Class Infrastructure
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Our state-of-the-art facility at Lakhowal Industrial Estate is equipped with cutting-edge technology to ensure precision and quality in every batch.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-amber-500 rounded-lg p-3 mr-4">
+                    <Factory className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-navy mb-2">Lakhowal Industrial Estate</h3>
+                    <p className="text-gray-600">
+                      Strategic location with excellent connectivity for global logistics and domestic distribution.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-amber-500 rounded-lg p-3 mr-4">
+                    <Award className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-navy mb-2">Uster Quality Standards</h3>
+                    <p className="text-gray-600">
+                      All products tested to meet international Uster quality parameters for consistency and excellence.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-amber-500 rounded-lg p-3 mr-4">
+                    <CheckCircle className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-navy mb-2">TFO Twisters</h3>
+                    <p className="text-gray-600">
+                      Advanced Two-For-One twisting machines for superior yarn strength and uniformity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
+                alt="Manufacturing Facility"
+                className="rounded-xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-amber-500 text-white p-6 rounded-xl shadow-lg">
+                <div className="text-3xl font-bold">ISO Certified</div>
+                <div className="text-sm mt-1">Manufacturing Excellence</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-navy text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Ready to discuss your yarn requirements? Contact us for competitive quotes and expert consultation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 text-amber-500">Contact Information</h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <MapPin className="text-amber-500 mr-4 flex-shrink-0 mt-1" size={24} />
+                    <div>
+                      <div className="font-semibold mb-1">Address</div>
+                      <div className="text-gray-300">
+                        Plot No. 53, Lakhowal Industrial Colony,<br />
+                        Chandigarh Road, Kohara,<br />
+                        Ludhiana - 141112, Punjab, India
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <Phone className="text-amber-500 mr-4 flex-shrink-0" size={24} />
+                    <div>
+                      <div className="font-semibold mb-1">Phone</div>
+                      <a href="tel:+919814023059" className="text-gray-300 hover:text-amber-500 transition-colors">
+                        +91 98140-23059
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <Mail className="text-amber-500 mr-4 flex-shrink-0" size={24} />
+                    <div>
+                      <div className="font-semibold mb-1">Email</div>
+                      <a href="mailto:exports@ashuyarn.com" className="text-gray-300 hover:text-amber-500 transition-colors">
+                        exports@ashuyarn.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <div className="font-semibold mb-2">Business Owner</div>
+                <div className="text-2xl font-bold text-amber-500 mb-4">Mr. Manoj Choudhary</div>
+                <div className="text-sm text-gray-300">
+                  <div className="mb-1">GST Number: 03AKRPC8464B1ZB</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+              <h3 className="text-2xl font-bold mb-6">Request a Quote</h3>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Your Name</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="+91 XXXXX-XXXXX"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Product Interest</label>
+                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-amber-500 transition-colors">
+                    <option value="">Select a product</option>
+                    <option value="cotton">Cotton Division</option>
+                    <option value="specialty">Specialty Blends</option>
+                    <option value="industrial">Industrial Yarns</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <textarea
+                    rows="4"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="Tell us about your requirements..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Submit Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-gray-400 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="text-2xl font-bold text-white mb-4">ASHU YARN</div>
+              <p className="text-sm">
+                Leading manufacturer and exporter of premium quality yarns, serving the global textile industry since 2012.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => scrollToSection('home')} className="hover:text-amber-500 transition-colors">
+                    Home
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('products')} className="hover:text-amber-500 transition-colors">
+                    Products
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('infrastructure')} className="hover:text-amber-500 transition-colors">
+                    Infrastructure
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('contact')} className="hover:text-amber-500 transition-colors">
+                    Contact
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm">
+                <li>Plot No. 53, Lakhowal Industrial Colony</li>
+                <li>Ludhiana - 141112, Punjab, India</li>
+                <li>Phone: +91 98140-23059</li>
+                <li>Email: exports@ashuyarn.com</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-700 pt-8 text-center text-sm">
+            <p>&copy; 2024 Ashu Yarn. All rights reserved. GST: 03AKRPC8464B1ZB</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
